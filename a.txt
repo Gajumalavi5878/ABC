@@ -1,0 +1,153 @@
+ docker run -d --name 250840123016-httpd-image -p 8084:80 250840123016-httpd:latest
+docker: permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+
+Run 'docker run --help' for more information
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker run -d --name 250840123016-httpd-image -p 8084:80 250840123016-httpd:latest
+f7e24ae17dcfa59a4bead2b863819abda4fecd2f33bc99749ce033edcef67bb5
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker run -d --name prn-250840123016-httpd-image -p 8084:8084 250840123016-httpd:latest
+bcd1576736dbf01cbdd7b9fa8084f25e93e5e5ae8329a51a4de699002704f8d9
+docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint prn-250840123016-httpd-image (8d19328426706c379fe0ea17bd25b5839f382e24cadc2c49028731e61ccaaf44): Bind for 0.0.0.0:8084 failed: port is already allocated
+
+Run 'docker run --help' for more information
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo nano Dockerfile
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ ls
+Dockerfile  index.html
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo nano Dockerfile
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker build -t prn-250840123016-httpd .
+[+] Building 2.6s (8/8) FINISHED                                                                         docker:default
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 185B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/httpd:alpine                                                    0.9s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 31B                                                                                   0.0s
+ => CACHED [1/3] FROM docker.io/library/httpd:alpine@sha256:07b2fabb7029a0b8aeb2e0fd02651c28fe22c21c5b5a59d6ff5b0  0.0s
+ => => resolve docker.io/library/httpd:alpine@sha256:07b2fabb7029a0b8aeb2e0fd02651c28fe22c21c5b5a59d6ff5b022791fc  0.0s
+ => [2/3] COPY index.html /usr/local/apache2/htdocs/                                                               0.1s
+ => [3/3] RUN sed -i 's/Listen 80/Listen 8084/' /usr/local/apache2/conf/httpd.conf                                 0.5s
+ => exporting to image                                                                                             0.8s
+ => => exporting layers                                                                                            0.3s
+ => => exporting manifest sha256:22265b2ad9672c8e6f492ff345e7b51a5c94a98c7e0b59267a0941e97f34e6bf                  0.0s
+ => => exporting config sha256:8e3d4122e6fbf0f01ee297d43e2b648eebdd2368c5a66d3479a1575e13dff095                    0.0s
+ => => exporting attestation manifest sha256:14dfb2fbb516e6978a06adf7808edcfacc9ac2a0ea01899a7badbe036a9adb79      0.2s
+ => => exporting manifest list sha256:f7a5347aea1bebfb6e101a167dd9d56360a6aadf013320096211cf6da988a2a1             0.0s
+ => => naming to docker.io/library/prn-250840123016-httpd:latest                                                   0.0s
+ => => unpacking to docker.io/library/prn-250840123016-httpd:latest                                                0.1s
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ docker stop container f7e24ae17dcfa59a4bead2b863819abda4fecd2f33bc99749ce033edcef67bb5
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker stop container f7e24ae17dcfa59a4bead2b863819abda4fecd2f33bc99749ce033edcef67bb5
+f7e24ae17dcfa59a4bead2b863819abda4fecd2f33bc99749ce033edcef67bb5
+Error response from daemon: No such container: container
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker rm container f7e24ae17dcfa59a4bead2b863819abda4fecd2f33bc99749ce033edcef67bb5
+f7e24ae17dcfa59a4bead2b863819abda4fecd2f33bc99749ce033edcef67bb5
+Error response from daemon: No such container: container
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker build -t prn-250840123016-httpd .
+[+] Building 2.6s (8/8) FINISHED                                                                         docker:default
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 185B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/httpd:alpine                                                    2.2s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 31B                                                                                   0.0s
+ => [1/3] FROM docker.io/library/httpd:alpine@sha256:07b2fabb7029a0b8aeb2e0fd02651c28fe22c21c5b5a59d6ff5b022791fc  0.1s
+ => => resolve docker.io/library/httpd:alpine@sha256:07b2fabb7029a0b8aeb2e0fd02651c28fe22c21c5b5a59d6ff5b022791fc  0.0s
+ => CACHED [2/3] COPY index.html /usr/local/apache2/htdocs/                                                        0.0s
+ => CACHED [3/3] RUN sed -i 's/Listen 80/Listen 8084/' /usr/local/apache2/conf/httpd.conf                          0.0s
+ => exporting to image                                                                                             0.2s
+ => => exporting layers                                                                                            0.0s
+ => => exporting manifest sha256:22265b2ad9672c8e6f492ff345e7b51a5c94a98c7e0b59267a0941e97f34e6bf                  0.0s
+ => => exporting config sha256:8e3d4122e6fbf0f01ee297d43e2b648eebdd2368c5a66d3479a1575e13dff095                    0.0s
+ => => exporting attestation manifest sha256:683a133000898fa383f80ae79e6c16942607250260a45975ded3d13943d32a3a      0.0s
+ => => exporting manifest list sha256:edaaaa753351878e97eb2a7ecd0f1debacbbb496c05e94188d39ecb11be21be9             0.0s
+ => => naming to docker.io/library/prn-250840123016-httpd:latest                                                   0.0s
+ => => unpacking to docker.io/library/prn-250840123016-httpd:latest                                                0.0s
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker run -d --name prn-250840123016-httpd-image -p 8084:8084 250840123016-httpd:latest
+docker: Error response from daemon: Conflict. The container name "/prn-250840123016-httpd-image" is already in use by container "bcd1576736dbf01cbdd7b9fa8084f25e93e5e5ae8329a51a4de699002704f8d9". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker stop bcd1576736dbf01cbdd7b9fa8084f25e93e5e5ae8329a51a4de699002704f8d9
+bcd1576736dbf01cbdd7b9fa8084f25e93e5e5ae8329a51a4de699002704f8d9
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker rm bcd1576736dbf01cbdd7b9fa8084f25e93e5e5ae8329a51a4de699002704f8d9
+bcd1576736dbf01cbdd7b9fa8084f25e93e5e5ae8329a51a4de699002704f8d9
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo docker run -d --name prn-250840123016-httpd-image -p 8084:8084 250840123016-httpd:latest
+9065b3a8f3e1016c1d1aa1bbf3f572acdac7753c82f9d87df7b3d07cd2c2ed58
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/ubuntu/lab/.git/
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git add .
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git commit -m "uploaded'
+> ^C
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git commit -m "uploaded"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ubuntu@ubuntu-VMware-Virtual-Platform.(none)')
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git config --global user.email "gajumalavi@gmail.com"
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git config --global user.name "gajumalavi5878"
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git commit -m "uploaded"
+[master (root-commit) ae58933] uploaded
+ 2 files changed, 5 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 index.html
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git branch -M main
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote add origin https://github.com/Gajumalavi5878/Gajanan_250840123016.gggit
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote add origin https://github.com/Gajumalavi5878/Gajanan_250840123016.git
+error: remote origin already exists.
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git push origin main
+Username for 'https://github.com': gajumalavi5878
+Password for 'https://gajumalavi5878@github.com': 
+remote: Repository not found.
+fatal: repository 'https://github.com/Gajumalavi5878/Gajanan_250840123016.gggit/' not found
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote rm origin https://github.com/Gajumalavi5878/Gajanan_250840123016.git
+usage: git remote remove <name>
+
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote remove origin https://github.com/Gajumalavi5878/Gajanan_250840123016.git
+usage: git remote remove <name>
+
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote remove origin https://github.com/Gajumalavi5878/Gajanan_250840123016.gggit
+usage: git remote remove <name>
+
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote remove origin
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git remote add origin https://github.com/Gajumalavi5878/gajanan_250840123016.git
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git push originn main
+fatal: 'originn' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ git push origin main
+Username for 'https://github.com': gajumalavi5878
+Password for 'https://gajumalavi5878@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 394 bytes | 131.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Gajumalavi5878/gajanan_250840123016.git
+ * [new branch]      main -> main
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ sudo nano cmd.txt
+[sudo] password for ubuntu: 
+ubuntu@ubuntu-VMware-Virtual-Platform:~/lab$ 
+
